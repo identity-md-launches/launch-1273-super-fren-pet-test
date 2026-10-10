@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "SFPTToken",
+    "name": "Super Fren Pet Test",
+    "symbol": "SFPT",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "125270724187523965593206900"
+  },
+  "economics": {
+    "poolBps": 9000,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0x000000000000000000000000000000000000dead"
+  },
+  "notes": "The entire fixed supply is minted once to the deployer. The launch factory distributes 10% through its Merkle distributor and seeds 90% into the pool. Every transfer from the specified PoolManager to another address sends floor(amount / 50) to the fixed treasury; incoming PoolManager and wallet transfers are untaxed. No owner, admin, mint, burn or upgrade entry points. The pool initialPrice is provenance only; the factory derives the opening price from economics and deployed currency order."
+}
