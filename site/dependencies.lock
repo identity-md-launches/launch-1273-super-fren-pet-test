@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "runtime": {
+    "three": "0.160.1"
+  },
+  "verificationTools": {
+    "typescript": "5.9.3",
+    "@playwright/test": "1.56.1",
+    "@axe-core/playwright": "4.11.0"
+  },
+  "files": [
+    {
+      "path": "assets/fonts/DM-Sans-LICENSE.txt",
+      "sha256": "9af36190332437f5ecd09974de43c1f7c77a310a996cdd8ceb25628b458840e1",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/fonts/IBM-Plex-Mono-LICENSE.txt",
+      "sha256": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/fonts/Space-Grotesk-LICENSE.txt",
+      "sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/fonts/dm-sans.woff2",
+      "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/fonts/ibm-plex-mono.woff2",
+      "sha256": "08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/fonts/space-grotesk.woff2",
+      "sha256": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d",
+      "source": "Google Fonts / SIL OFL"
+    },
+    {
+      "path": "assets/logo.jpg",
+      "sha256": "ee2f525a2098d901d341458170de81ffd24c5a0ef1eebd9d92714926f9c387fe",
+      "source": "https://fxumiqjngmabtgvruvka.supabase.co/storage/v1/object/public/forum-attachments/posts/mv2xmo7j-b4hchu.jpg"
+    },
+    {
+      "path": "vendor/THREE-LICENSE.txt",
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+      "source": "https://cdn.jsdelivr.net/npm/three@0.160.1/"
+    },
+    {
+      "path": "vendor/three.module.min.js",
+      "sha256": "3e690ac7d180b0aadf0891bea39eec643e29e2d3e75c99b18689518665f69ba6",
+      "source": "https://cdn.jsdelivr.net/npm/three@0.160.1/"
+    }
+  ]
+}

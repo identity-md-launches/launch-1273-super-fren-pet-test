@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101713">
+  <title>Super Fren Pet Test · Small fren. Clear rules.</title>
+  <meta name="description" content="Meet Super Fren Pet Test ($SFPT): a fixed-supply Ethereum token experiment with a 2% buy tax and a cozy shared pet den. Do not buy, this is a test.">
+  <link rel="canonical" href="https://superfrenpettest.si-md.xyz/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://superfrenpettest.si-md.xyz/">
+  <meta property="og:title" content="Super Fren Pet Test · Small fren. Clear rules.">
+  <meta property="og:description" content="A little green pet. One billion fixed-supply SFPT. Explore the test launch and its transparent 2% buy tax. Do not buy, this is a test.">
+  <meta property="og:image" content="https://superfrenpettest.si-md.xyz/assets/logo.jpg">
+  <meta property="og:image:alt" content="The green pixel pet in its mint LCD game console">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Super Fren Pet Test · Small fren. Clear rules.">
+  <meta name="twitter:description" content="A cozy pet den for a transparent token experiment. Do not buy, this is a test.">
+  <meta name="twitter:image" content="https://superfrenpettest.si-md.xyz/assets/logo.jpg">
+  <link rel="icon" type="image/jpeg" href="./assets/logo.jpg">
+  <link rel="preload" href="./assets/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-row">
+      <a class="brand" href="./" aria-label="Super Fren Pet Test home"><img data-logo src="./assets/logo.jpg" width="42" height="42" alt=""><span>Super Fren<span class="brand-sub">Pet Test <span class="mono">/ SFPT</span></span></span></a>
+      <button class="menu-toggle button button-small" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">+</span></button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#mechanics">How it works</a><a href="#calculator">The numbers</a><a href="#how-to-buy">How to buy</a><a href="./docs/">Docs <span aria-hidden="true">↗</span></a>
+      </nav>
+      <a class="nav-action button button-small" href="#den">Meet your fren <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="pill"><span class="status-dot"></span>Ethereum <span class="pill-divider">/</span> Test launch</div>
+        <h1 id="hero-title">Small fren.<br><span>Clear rules.</span></h1>
+        <p class="hero-description">Super Fren Pet Test ($SFPT).<br>A fixed-supply token experiment with a little green soul.</p>
+        <p class="test-notice"><span aria-hidden="true">ⓘ</span> Do not buy, this is a test.</p>
+        <div class="actions"><a class="button button-primary magnetic" data-coin-link aria-disabled="true" role="link">Buy $SFPT <span aria-hidden="true">↗</span></a><a class="button button-primary" data-fallback-action href="./docs/">Read the docs <span aria-hidden="true">→</span></a></div>
+        <p class="launch-hint" data-launch-hint>Buy link available when launch data arrives.</p>
+        <div class="hero-facts"><span><b>1B</b> fixed supply</span><span><b>2%</b> buy tax</span><span><b>No</b> owner</span></div>
+      </div>
+      <div class="den" id="den">
+        <div class="den-top"><span><span class="status-dot"></span> The shared den</span><span class="mono">Interactive concept</span></div>
+        <div class="scene-wrap" id="scene-wrap">
+          <div class="scene-fallback" id="scene-fallback"><img data-logo src="./assets/logo.jpg" alt="Super Fren Pet, a friendly green pixel creature inside a handheld LCD console" width="400" height="400"><span class="mono">A little fren is home.</span></div>
+          <canvas id="room" role="img" aria-label="An isometric paper-white room with a green pixel pet, glowing nest, trading desk, plant, bridge concept window and robot keeper"></canvas>
+          <div class="pet-hud"><span class="hud-icon" aria-hidden="true">✳</span><div><strong>Super Fren Pet Test</strong><span class="mono">$SFPT · Level — · Points — · TOD —</span></div></div>
+        </div>
+        <div class="den-controls"><button id="trace-buy" class="button button-small"><span aria-hidden="true">⌁</span> Trace a buy</button><span id="den-message" class="den-message" role="status">Follow the 2% trail.</span><button id="motion-toggle" class="icon-button" aria-label="Pause animation" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg></button></div>
+        <p class="den-caption">A room imagined for the community. Pet stats, bridge and staking are concept art, not live features.</p>
+      </div>
+    </section>
+
+    <section class="stats-section" aria-label="Live market statistics">
+      <div class="container stats-top"><span class="live-label"><span class="status-dot"></span> Launch telemetry</span><span id="data-status" role="status">Awaiting launch data</span><button id="refresh-data" class="text-button">Refresh <span aria-hidden="true">↻</span></button></div>
+      <dl class="container stats-grid"><div><dt>Price <span>USD</span></dt><dd data-stat="priceUsd">—</dd></div><div><dt>Market cap <span>USD</span></dt><dd data-stat="marketCap">—</dd></div><div><dt>24h volume <span>USD</span></dt><dd data-stat="volume24h">—</dd></div><div><dt>Total supply <span>SFPT</span></dt><dd>1,000,000,000</dd></div></dl>
+      <div class="container stats-bottom"><span>Market data refreshes every 30 seconds.</span><a class="text-link" data-chart-link aria-disabled="true" role="link">Open chart <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="section container" id="mechanics" aria-labelledby="mechanics-title">
+      <div class="section-heading reveal"><div class="section-index mono">01 / The mechanism</div><h2 id="mechanics-title">One buy.<br>Two destinations.</h2><p>The rule is simple enough to fit on a wall. Every SFPT transfer out of the Uniswap v4 PoolManager sends 2% to a fixed treasury and the rest to the recipient.</p></div>
+      <div class="flow-panel reveal">
+        <svg class="flow-path" viewBox="0 0 1000 180" preserveAspectRatio="none" aria-hidden="true"><path class="flow-track" d="M60 90H370Q400 90 400 60V35H930M400 90V145H930"/><path class="flow-signal" d="M60 90H370Q400 90 400 60V35H930M400 90V145H930"/></svg>
+        <div class="flow-node flow-start"><span class="flow-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 5v8l-8 5-8-5V8zM4 8l8 5 8-5M12 13v8"/></svg></span><h3>PoolManager</h3><p>Gross SFPT output</p><span class="mono">100%</span></div>
+        <div class="flow-split"><article class="flow-destination"><span class="flow-percent">98<span>%</span></span><div><h3>The recipient</h3><p>Your purchase, after the tax.</p></div><span aria-hidden="true">↗</span></article><article class="flow-destination treasury-flow"><span class="flow-percent">2<span>%</span></span><div><h3>The fixed treasury</h3><p>Sent automatically in SFPT.</p></div><span aria-hidden="true">↗</span></article></div>
+      </div>
+      <div class="flow-progress" aria-label="Scroll through the transfer route"><div class="flow-progress-bars" aria-hidden="true"><i></i><i></i><i></i></div><p id="flow-caption">The PoolManager sends the gross SFPT output.</p><span class="mono">Scroll to trace ↓</span></div>
+      <div class="mechanics-notes"><p><span class="mini-dot"></span> Sells &amp; wallet transfers: <strong>0% token tax</strong></p><p>Separate pool fee: <strong>1.25%</strong></p><a class="text-link" href="./docs/#transfer-rules">Read the exact transfer rules ↗</a></div>
+    </section>
+
+    <section class="section container features" aria-labelledby="features-title">
+      <div class="section-heading reveal"><div class="section-index mono">02 / Built into the code</div><h2 id="features-title">Less to trust.<br>More to understand.</h2></div>
+      <div class="feature-grid">
+        <article class="feature-card reveal"><svg class="feature-icon" viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="3"/><path d="M11 12h10M11 16h10M11 20h5"/></svg><h3>One billion. Once.</h3><p>All 1,000,000,000 SFPT are minted to the deployer at creation. The supply has 18 decimals and can never grow.</p><span class="card-note mono">Fixed supply</span></article>
+        <article class="feature-card reveal"><svg class="feature-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M5 23V9h22v14zM5 16h22M16 9v14"/><circle cx="10" cy="12" r="1"/></svg><h3>A place for the swarm.</h3><p>The launch factory assigns 10% through its Merkle distributor. The other 90% is budgeted to seed the SFPT / IMD pool.</p><span class="card-note mono">90% pool / 10% swarm</span></article>
+        <article class="feature-card reveal"><svg class="feature-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 11h20l-5-5M26 21H6l5 5M26 11v4M6 21v-4"/></svg><h3>The fee has one route.</h3><p>The 2% buy tax goes to one treasury in SFPT. Sells, seed deposits and ordinary wallet transfers have no token tax.</p><span class="card-note mono">Fixed rate / fixed recipient</span></article>
+        <article class="feature-card reveal"><svg class="feature-icon" viewBox="0 0 32 32" aria-hidden="true"><path d="m16 4 11 4v9c0 6-11 11-11 11S5 23 5 17V8zM11 16l3 3 7-7"/></svg><h3>No control room.</h3><p>No owner, admin, upgrade switch or ability to change fees. The treasury and tax rate are constants in the token’s code.</p><span class="card-note mono">No privileged controls</span></article>
+      </div>
+    </section>
+
+    <section class="section calculator-section" id="calculator" aria-labelledby="calculator-title">
+      <div class="container calculator-grid"><div class="section-heading reveal"><div class="section-index mono">03 / Try the rule</div><h2 id="calculator-title">Tiny tax.<br>Visible arithmetic.</h2><p>Move the slider to trace a hypothetical buy. This uses SFPT output, not trading volume in dollars: the token collects its tax in SFPT.</p><a class="text-link" href="./docs/#rounding">How rounding works ↗</a></div>
+        <div class="calculator reveal"><div class="calculator-top"><span class="mono">Buy simulator</span><span class="pill small-pill">Illustration only</span></div><label for="buy-amount">Gross SFPT from the pool</label><div class="amount-field"><input id="buy-amount" type="text" inputmode="decimal" value="1000" autocomplete="off" aria-describedby="amount-help amount-error"><span class="mono">SFPT</span></div><p id="amount-help" class="help">Enter 0–1,000,000,000 SFPT, up to 18 decimals.</p><p id="amount-error" class="field-error" hidden></p><label class="sr-only" for="buy-range">Adjust whole SFPT purchase amount</label><input id="buy-range" type="range" min="0" max="1000000" step="1000" value="1000"><div class="range-labels mono"><span>0 SFPT</span><span>1,000,000 SFPT</span></div><div class="calculator-results" aria-live="polite" aria-atomic="true"><div><span>To the treasury <b>2%</b></span><output id="tax-output" for="buy-amount buy-range">20</output><span class="mono">SFPT</span></div><div><span>To the recipient <b>98%</b></span><output id="net-output" for="buy-amount buy-range">980</output><span class="mono">SFPT</span></div></div><p class="help">Calculated on token output after the swap. Pool fees, price impact and gas are separate. This is not a quote.</p></div>
+      </div>
+    </section>
+
+    <section class="section container" id="security" aria-labelledby="security-title">
+      <div class="section-heading reveal"><div class="section-index mono">04 / Open by design</div><h2 id="security-title">Check the rules yourself.</h2><p>A friendly face is no substitute for readable code. Start with the source, the transfer rules and the deployment status.</p></div>
+      <div class="security-grid"><div class="contract-card reveal"><div class="contract-heading"><span class="mono">SFPT / Ethereum</span><span class="pill small-pill" data-token-status>Awaiting deployment</span></div><span class="help">Token contract</span><code class="contract-address" data-address>launching…</code><div class="actions"><button class="button button-small" data-copy-contract disabled>Copy address <span aria-hidden="true">⧉</span></button><a class="text-link" data-explorer aria-disabled="true" role="link">View on Etherscan ↗</a></div><p class="help">The address is loaded from this site’s live launch data. Always check the network and token before any transaction.</p></div><div class="security-list reveal"><div><span class="check-mark">✓</span><div><h3>No owner or admin</h3><p>The fixed parameters cannot be changed after deployment.</p></div></div><div><span class="check-mark">↗</span><div><h3>Source available</h3><p><a href="./docs/SFPTToken.sol" download>Read SFPTToken.sol</a>. Explorer verification is not yet confirmed.</p></div></div><div><span class="check-mark">◌</span><div><h3>Review status, stated plainly</h3><p>Local Foundry tests cover the token and Uniswap v4 settlement. The launchpad describes a four-AI-auditor and judge process; a completed audit report is not provided here.</p></div></div></div></div>
+    </section>
+
+    <section class="section container" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="section-heading reveal"><div class="section-index mono">05 / The path from here</div><h2 id="roadmap-title">A test with a purpose.</h2><p>A sequence for this experiment, not a promise of delivery dates or financial returns.</p></div><ol class="timeline"><li class="reveal"><span class="timeline-dot"></span><span class="mono">Built</span><h3>Make the rules legible</h3><p>Fixed-supply contract, local transfer tests and this interactive den.</p></li><li class="reveal"><span class="timeline-dot"></span><span class="mono">At launch</span><h3>Let the factory distribute</h3><p>10% to the swarm distributor; 90% budgeted for the IMD pool. Deployment data appears when available.</p></li><li class="reveal"><span class="timeline-dot"></span><span class="mono">Concept</span><h3>Explore a shared pet</h3><p>The bridge, keeper and pet nest visualize the creator’s idea. No bridge, FP conversion or staking is implemented by this token.</p></li></ol>
+    </section>
+
+    <section class="section guide-section" id="how-to-buy" aria-labelledby="guide-title">
+      <div class="container guide-grid"><div class="section-heading reveal"><div class="section-index mono">06 / Know the route</div><h2 id="guide-title">Before any swap.</h2><p>This is an educational walkthrough. The creator’s instruction is clear: do not buy, this is a test.</p><img class="guide-logo" data-logo src="./assets/logo.jpg" width="88" height="88" loading="lazy" alt="The SFPT green pixel pet"></div><div class="buy-guide reveal"><div class="step-buttons" role="group" aria-label="Buying guide steps"><button data-step="0" aria-pressed="true">1. Wallet</button><button data-step="1" aria-pressed="false">2. ETH &amp; IMD</button><button data-step="2" aria-pressed="false">3. Coin page</button></div><div id="guide-content" aria-live="polite"><span class="guide-step mono" id="guide-step">Step 1 of 3</span><h3 id="guide-heading">Start with an Ethereum wallet.</h3><p id="guide-description">Use a wallet you control on Ethereum mainnet. Keep its recovery phrase private. This website never asks to connect your wallet.</p></div><div class="guide-bottom"><button id="guide-next" class="button button-small">Next: ETH &amp; IMD <span aria-hidden="true">→</span></button><button class="text-button" data-copy-contract disabled>Copy contract ⧉</button></div></div></div>
+    </section>
+
+    <section class="section container faq-section" id="faq" aria-labelledby="faq-title"><div class="section-heading reveal"><div class="section-index mono">07 / A few good questions</div><h2 id="faq-title">Get to know your fren.</h2></div><div class="faq-list reveal">
+      <details><summary>Is this Super Fren Pet or Super Fren Pet Test?<span aria-hidden="true">+</span></summary><p>This launch is Super Fren Pet Test, ticker SFPT. The creator’s pet-room concept originally used SFP. The room carries that idea, but all token details on this site refer to SFPT. The creator says: “Do not buy, this is a test.”</p></details>
+      <details><summary>Does every trade feed the pet?<span aria-hidden="true">+</span></summary><p>That phrase describes the room’s creative concept, not an on-chain guarantee. The implemented contract sends a fixed 2% of outgoing PoolManager transfers to the treasury in SFPT. It does not convert to IMD or FP, bridge to Base, or stake into a pet.</p></details>
+      <details><summary>What fees apply when buying or selling?<span aria-hidden="true">+</span></summary><p>Buying SFPT from the PoolManager incurs a 2% token tax, rounded down to token minor units. Selling into the PoolManager has no token tax. The Uniswap v4 pool has a separate 1.25% fee, and gas and price impact may also apply. Other PoolManager outflows, including liquidity withdrawals, are subject to the token’s same outgoing-transfer rule.</p></details>
+      <details><summary>Can anyone mint more or change the treasury?<span aria-hidden="true">+</span></summary><p>No. All one billion SFPT are minted once to the deployer. There is no owner or administrative function, and both the 2% rate and treasury wallet are constants.</p></details>
+      <details><summary>Why are the price and address blank?<span aria-hidden="true">+</span></summary><p>The site loads launch information from its same-origin data feed. Until an address and market values arrive, it shows “launching…” and dashes. If a refresh fails, market values are cleared and the last confirmed links and address, if any, are labeled as cached.</p></details>
+      <details><summary>Is the pet room a game or a wallet?<span aria-hidden="true">+</span></summary><p>It is an interactive illustration. “Trace a buy” demonstrates the token split without moving funds. The pet HUD, bridge window, leaderboard and robot keeper are concept scenery. Nothing connects to your wallet or records personal information.</p></details>
+    </div></section>
+
+    <section class="final-section container" aria-labelledby="final-title"><div class="final-pet"><img data-logo src="./assets/logo.jpg" width="80" height="80" loading="lazy" alt=""></div><div><h2 id="final-title">Come for the fren.<br>Stay curious.</h2><p>Explore the experiment. Read the rules. Share the little green room.</p></div><div class="final-actions"><a class="button button-primary magnetic" href="./docs/">Explore the docs <span aria-hidden="true">↗</span></a><p class="help">Do not buy, this is a test.</p></div><div class="share-row"><span>Pass the fren along</span><a data-share="0" class="button button-small" href="https://x.com/intent/tweet?text=Meet%20Super%20Fren%20Pet%20Test.%20Do%20not%20buy%2C%20this%20is%20a%20test.&amp;url=https%3A%2F%2Fsuperfrenpettest.si-md.xyz%2F" target="_blank" rel="noopener noreferrer">Share the den ↗</a><a data-share="1" class="button button-small" href="https://x.com/intent/tweet?text=SFPT%3A%20fixed%20supply%2C%20fixed%20rules.%20Do%20not%20buy%2C%20this%20is%20a%20test.&amp;url=https%3A%2F%2Fsuperfrenpettest.si-md.xyz%2F" target="_blank" rel="noopener noreferrer">Share the rules ↗</a><a data-share="2" class="button button-small" href="https://x.com/intent/tweet?text=A%20little%20green%20fren%20on%20Ethereum.%20Explore%20SFPT.%20Do%20not%20buy%2C%20this%20is%20a%20test.&amp;url=https%3A%2F%2Fsuperfrenpettest.si-md.xyz%2F" target="_blank" rel="noopener noreferrer">Share the experiment ↗</a><button class="text-button" id="copy-link">Copy link ⧉</button></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-top"><a class="brand" href="./"><img data-logo src="./assets/logo.jpg" width="32" height="32" alt=""><span>Super Fren Pet Test</span></a><div><a href="./docs/">Documentation</a><a href="#faq">FAQ</a><a href="#main">Back to top ↑</a></div></div><div class="container footer-bottom"><p>Built 100% by the Identity.md swarm · launched on <a href="https://www.si-md.xyz/launchpad" target="_blank" rel="noopener noreferrer">si-md.xyz/launchpad</a> · not financial advice.</p><span class="mono">A little green experiment.</span></div></footer>
+  <div class="toast" id="toast" role="status" hidden><span id="toast-message"></span><button class="icon-button" id="dismiss-toast" aria-label="Dismiss notification">×</button></div>
+  <noscript><div class="noscript-note">JavaScript is off. The token rules and docs are still available. Live data, the simulator and the 3D room need JavaScript.</div></noscript>
+</body>
+</html>
