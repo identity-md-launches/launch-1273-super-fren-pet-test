@@ -5,6 +5,13 @@ import {Test} from "forge-std/Test.sol";
 import {SFPTToken} from "../src/SFPTToken.sol";
 import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 
+/// @dev Test-only recipient proving tax collection needs no treasury callback.
+contract RejectingTreasury {
+    fallback() external {
+        revert("no treasury callbacks");
+    }
+}
+
 contract SFPTTokenTest is Test {
     SFPTToken internal token;
     address internal constant MANAGER = 0x000000000004444c5dc75cB358380D2e3dE08A90;
@@ -54,6 +61,21 @@ contract SFPTTokenTest is Test {
         assertEq(token.balanceOf(MANAGER), 0);
         assertEq(token.balanceOf(alice), 98 ether);
         assertEq(token.balanceOf(TREASURY), 2 ether);
+    }
+
+    function test_BuySucceedsWhenTreasuryRejectsCalls() public {
+        vm.etch(TREASURY, address(new RejectingTreasury()).code);
+        (bool acceptsCall,) = TREASURY.call("");
+        assertFalse(acceptsCall, "treasury fixture must reject calls");
+
+        token.transfer(MANAGER, 100 ether);
+        vm.prank(MANAGER);
+        assertTrue(token.transfer(alice, 100 ether));
+
+        assertEq(token.balanceOf(MANAGER), 0);
+        assertEq(token.balanceOf(alice), 98 ether);
+        assertEq(token.balanceOf(TREASURY), 2 ether);
+        assertEq(token.totalSupply(), SUPPLY);
     }
 
     function test_TransferFromUsesSourceAndSpendsGrossAllowance() public {
@@ -152,6 +174,23 @@ contract SFPTTokenTest is Test {
         assertEq(token.balanceOf(MANAGER), 99 ether);
         assertEq(token.balanceOf(alice), 0);
         assertEq(token.allowance(MANAGER, spender), 100 ether);
+    }
+
+    function test_MaximumBuyRevertsWithoutArithmeticOverflowOrBalanceChanges() public {
+        token.transfer(MANAGER, 100 ether);
+        vm.prank(MANAGER);
+        token.approve(spender, type(uint256).max);
+
+        vm.prank(spender);
+        vm.expectPartialRevert(IERC20Errors.ERC20InsufficientBalance.selector);
+        token.transferFrom(MANAGER, alice, type(uint256).max);
+
+        assertEq(token.balanceOf(MANAGER), 100 ether);
+        assertEq(token.balanceOf(alice), 0);
+        assertEq(token.balanceOf(TREASURY), 0);
+        assertEq(token.balanceOf(address(this)), SUPPLY - 100 ether);
+        assertEq(token.allowance(MANAGER, spender), type(uint256).max);
+        assertEq(token.totalSupply(), SUPPLY);
     }
 
     function test_NetOnlyAllowanceCannotPayGrossBuy() public {

@@ -54,23 +54,28 @@ The five image-generated logo options are in [logos/](logos/README.md). The sele
 
 Every transfer **from** `0x000000000004444c5dc75cB358380D2e3dE08A90` to another address debits the gross amount from the PoolManager and splits it into `floor(amount / 50)` for the fixed treasury `0x900bCC8d58B67fF741c32D0Cd9a28aA1555c8068` and the remainder for the recipient. The same rule applies to `transferFrom`; allowances cover the gross amount. Tax rounds down in token minor units, so transfers below 50 minor units have zero tax. Incoming PoolManager transfers, including sells, seed deposits and PoolManager self-transfers, are exempt. Other wallet transfers are exempt. The treasury receives both portions when it is itself the recipient.
 
+Tax collection credits the treasury's SFPT balance directly. It makes no external call to the treasury, so a treasury contract that rejects calls cannot block buys. A fully approved buy transfer of `type(uint256).max` fails with an insufficient-balance error rather than an arithmetic overflow; rejected transfers preserve balances, allowances and supply.
+
 The token does not distinguish swaps from other PoolManager outflows. Consequently, liquidity withdrawals and any other outgoing PoolManager transfers also follow this rule. A router's quoted output is gross; recipient-balance checks and minimum-output settings must account for the tax. The tests exercise both successful net-output checks and atomic rejection of a minimum that exceeds the net receipt.
 
 [launch.json](launch.json) supplies the exact requested launch parameters: IMD pairing, fee `12500` (1.25%), tick spacing `60`, provenance initial price `125270724187523965593206900`, and opening capitalization of `2500000000000000000000` paired-currency minor units. The factory derives the actual opening price using the deployed currency order. These are launch configuration values; the token does not deploy or configure pools.
 
-The launch factory holds the entire supply initially. It sends 10% through its external Merkle distributor, budgets 90% for the single-sided pool seed, and forwards any seed rounding remainder to the specified `remainderTo`. The token makes no separate swarm allocation or distribution. No requester address or deployment key is needed by its constructor.
+The launch factory holds the entire supply initially. It sends 10% through its external Merkle distributor, budgets 90% for the single-sided pool seed, and forwards any seed rounding remainder to the requested `remainderTo`, `0x000000000000000000000000000000000000dead`. The token makes no separate swarm allocation or distribution. No requester address or deployment key is needed by its constructor.
+
+The launch order selects Ethereum mainnet (chain id 1); `launch.json` deliberately has no chain field. The factory deploys `SFPTToken` with no constructor arguments and no ETH value. No initialization or administrative transaction follows deployment. The launch operator is responsible for factory distribution, pool initialization from the supplied economics, deployed-source verification, and checking the chosen trading router's actual net receipts.
 
 ## Local verification
 
 ```sh
 forge build
 forge test
+forge fmt --check
 python3 tools/check_logos.py
 ```
 
 Foundry is pinned to Solidity **0.8.26**, Cancun, optimizer enabled and `bytecode_hash = "none"`. All imported source dependencies and their licences are ordinary files under `lib/`; no submodules, external library paths, FFI or filesystem permissions are required. Dependency source commits are recorded in [lib/DEPENDENCIES.json](lib/DEPENDENCIES.json). The logo check uses the vendored PyPNG 0.20220715.0 module and the Python standard library.
 
-**Validation result:** `forge build` and all **23 tests** passed. Three fuzz tests each ran 1,000 cases. Tests cover deployment/distribution, source-based tax, rounding boundaries, supply conservation, incoming settlement, wallet transfers, gross allowances, failure rollback, zero amounts, self-transfers, treasury recipients, missing admin selectors and forbidden runtime opcodes.
+**Validation result:** `forge build`, `forge test` and `forge fmt --check` passed with Solidity 0.8.26. All **25 tests** passed. The three existing fuzz tests each ran 1,000 cases; this assignment adds only two deterministic regression tests. Tests cover deployment/distribution, source-based tax, rounding boundaries, supply conservation, incoming settlement, wallet transfers, gross allowances, failure rollback, zero amounts, self-transfers, treasury recipients, missing admin selectors and forbidden runtime opcodes. The added tests cover rejection of the maximum transfer amount without overflow or balance changes, and successful tax collection when the treasury rejects external calls.
 
 The integration suite constructs the vendored **real Uniswap v4 PoolManager implementation** locally at the mandated address and uses a test-only ERC-20 at the paired-currency address. It verifies fee 12500, tick spacing 60, single-sided seeding, buys and sells with both token orderings, exact-output buys, net slippage, liquidity removal, and zero outstanding currency deltas after each unlock. Test fixtures are under `test/` and are not launch contracts.
 
